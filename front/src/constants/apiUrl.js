@@ -2,7 +2,7 @@ const REST_COUNTRIES_API_URL =
   "https://restcountries.com/v3.1/all?fields=name,flags,languages";
 
 // const BASEURL = "http://3.27.35.124";
-const BASEURL = "http://localhost:8081";
+export const BASEURL = "http://localhost:8081";
 
 const GET_VISITORS_API_URL = BASEURL + "/visitors";
 const GET_CUSTOMERS_API_URL = BASEURL + "/customers";

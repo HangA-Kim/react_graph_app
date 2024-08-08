@@ -3,9 +3,10 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { RootState } from "redux/store";
 import { darkTheme, lightTheme } from "./theme/theme";
-import { Paper, ThemeProvider } from "@mui/material";
+import { Box, Paper, ThemeProvider } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import DashboardScreen from "components/DashboardScreen";
+import DashboardScreen from "components/dashboard/DashboardScreen";
+import { globalSize } from "theme/globalSize";
 
 function App() {
   const theme = useSelector((state: RootState) => state.theme);
@@ -25,13 +26,16 @@ function App() {
   return (
     <ThemeProvider theme={theme.darkTheme ? darkTheme : lightTheme}>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <Paper className="App">
-          {/* <Sidebar /> */}
-          <LeftSidebar />
-          <Routes>
-            <Route path="/" element={<DashboardScreen />} />
-            <Route path="*" element={<div>ERR! 404</div>} />
-          </Routes>
+        <Paper className="App" sx={{ display: 'flex', minHeight: '100vh' }}>
+          <Box sx={{ width: globalSize.drawerWidth, flexShrink: 0 }}>
+            <LeftSidebar />
+          </Box>
+          <Box sx={{ flexGrow: 1, padding: 3 }}>
+            <Routes>
+              <Route path="/" element={<DashboardScreen />} />
+              <Route path="*" element={<div>ERR! 404</div>} />
+            </Routes>
+          </Box>
         </Paper>
       </BrowserRouter>
     </ThemeProvider>
