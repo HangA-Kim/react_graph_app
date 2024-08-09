@@ -26,11 +26,11 @@ function App() {
   return (
     <ThemeProvider theme={theme.darkTheme ? darkTheme : lightTheme}>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <Paper className="App" sx={{ display: 'flex', minHeight: '100vh' }}>
+        <Paper className="App" sx={{ display: "flex", minHeight: "100vh" }}>
           <Box sx={{ width: globalSize.drawerWidth, flexShrink: 0 }}>
             <LeftSidebar />
           </Box>
-          <Box sx={{ flexGrow: 1, padding: 3 }}>
+          <Box sx={{ flexGrow: 1, padding: 1 }}>
             <Routes>
               <Route path="/" element={<DashboardScreen />} />
               <Route path="*" element={<div>ERR! 404</div>} />

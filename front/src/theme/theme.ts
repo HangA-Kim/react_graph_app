@@ -51,7 +51,7 @@ export const lightTheme = createTheme({
       primary: globalColors.Black,
     },
     primary: {
-      main: globalColors.Black,
+      main: globalColors.White,
       // light: '#ffa07a',
       // dark: '#cd5c5c',
       // contrastText: '#fff'

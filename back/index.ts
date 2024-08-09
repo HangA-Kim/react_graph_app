@@ -21,10 +21,10 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Typescript + Node.js + Express Server");
 });
 
-function createGet(dicName: string) {
+function createGet(dicName: string, tableName: string) {
   app.get("/" + dicName, async (req: Request, res: Response) => {
     try {
-      const result = await pool.query("SELECT * FROM " + dicName);
+      const result = await pool.query("SELECT * FROM " + tableName);
       return res.status(200).json(result.rows);
     } catch (error) {
       console.error("post ", dicName, error);
@@ -33,13 +33,13 @@ function createGet(dicName: string) {
   });
 }
 
-createGet("visitors");
-createGet("customers");
-createGet("revenue");
-createGet("targetReality");
-createGet("topProducts");
-createGet("salesMap");
-createGet("volumeServices");
+createGet("visitors", "visitors");
+createGet("customers", "customers");
+createGet("revenue", "revenue");
+createGet("targetReality", "target_reality");
+createGet("topProducts", "top_products");
+createGet("salesMap", "sales_map");
+createGet("volumeServices", "volume_services");
 
 app
   .listen(port, () => {

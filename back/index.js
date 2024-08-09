@@ -30,10 +30,10 @@ app.use(express_1.default.json());
 app.get("/", (req, res) => {
     res.send("Typescript + Node.js + Express Server");
 });
-function createGet(dicName) {
+function createGet(dicName, tableName) {
     app.get("/" + dicName, (req, res) => __awaiter(this, void 0, void 0, function* () {
         try {
-            const result = yield database_1.pool.query("SELECT * FROM " + dicName);
+            const result = yield database_1.pool.query("SELECT * FROM " + tableName);
             return res.status(200).json(result.rows);
         }
         catch (error) {
@@ -42,13 +42,13 @@ function createGet(dicName) {
         }
     }));
 }
-createGet("visitors");
-createGet("customers");
-createGet("revenue");
-createGet("targetReality");
-createGet("topProducts");
-createGet("salesMap");
-createGet("volumeServices");
+createGet("visitors", "visitors");
+createGet("customers", "customers");
+createGet("revenue", "revenue");
+createGet("targetReality", "target_reality");
+createGet("topProducts", "top_products");
+createGet("salesMap", "sales_map");
+createGet("volumeServices", "volume_services");
 app
     .listen(port, () => {
     console.log(`[server]: Server is running at <http://localhost>:${port}`);

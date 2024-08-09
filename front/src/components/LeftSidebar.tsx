@@ -32,8 +32,6 @@ export default function LeftSidebar() {
           "& .MuiDrawer-paper": {
             width: globalSize.drawerWidth,
             boxSizing: "border-box",
-            background: "black",
-            color: "white",
           },
         }}
         variant="permanent"
